@@ -1,7 +1,7 @@
 {
   "name": "viperIDE-mcp",
   "version": "0.1.0",
-  "description": "MCP server for controlling ViperIDE from Claude",
+  "description": "MCP server for controlling Codemicro from Claude",
   "type": "module",
   "main": "src/index.js",
   "scripts": {

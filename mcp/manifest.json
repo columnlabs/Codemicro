@@ -1,16 +1,16 @@
 {
   "manifest_version": "0.3",
   "name": "viperIDE",
-  "display_name": "ViperIDE",
+  "display_name": "Codemicro",
   "version": "0.1.0",
   "description": "MicroPython/CircuitPython IDE with full remote control. Connect to devices via USB serial, browse files, edit code, execute scripts, and interact with the REPL.",
   "author": {
     "name": "Andrew Leech & Volodymyr Shymanskyy"
   },
   "license": "MIT",
-  "homepage": "https://viper-ide.org",
+  "homepage": "https://columnlabs.github.io/Codemicro",
   "repository": {
-    "url": "https://github.com/vshymanskyy/ViperIDE"
+    "url": "https://github.com/columnlabs/Codemicro"
   },
   "server": {
     "type": "node",

@@ -1,20 +1,20 @@
-# ViperIDE MCP Server
+# Codemicro MCP Server
 
-An MCP (Model Context Protocol) server that gives Claude full remote control of [ViperIDE](https://viper-ide.org), a MicroPython/CircuitPython IDE. The IDE opens in your browser for direct interaction while Claude simultaneously controls it via MCP tools.
+An MCP (Model Context Protocol) server that gives Claude full remote control of [Codemicro](https://columnlabs.github.io/Codemicro), a MicroPython/CircuitPython IDE. The IDE opens in your browser for direct interaction while Claude simultaneously controls it via MCP tools.
 
 ## Architecture
 
-The MCP server acts as a bridge between Claude and ViperIDE running in your browser. It also provides a serial-to-WebSocket bridge so USB devices can be connected without browser permission dialogs.
+The MCP server acts as a bridge between Claude and Codemicro running in your browser. It also provides a serial-to-WebSocket bridge so USB devices can be connected without browser permission dialogs.
 
 | Component | Role | Connection |
 |---|---|---|
 | **Claude** (Code/Desktop) | Sends MCP tool calls | stdio JSON-RPC to MCP server |
 | **MCP Server** (Node.js) | Routes commands, serves IDE, bridges serial | localhost HTTP + WebSocket |
-| **Browser** (ViperIDE) | IDE UI, executes commands on device | WS control channel (`/ws`) |
+| **Browser** (Codemicro) | IDE UI, executes commands on device | WS control channel (`/ws`) |
 | **USB Device** (MicroPython) | Target hardware | Serial port via WS bridge (`/serial/...`) |
 
 The MCP server:
-1. Serves the built ViperIDE on a random localhost port
+1. Serves the built Codemicro on a random localhost port
 2. Opens your default browser to the IDE
 3. Maintains a WebSocket control channel for sending commands
 4. Exposes IDE operations as MCP tools that Claude can call
@@ -25,7 +25,7 @@ Both you and Claude can interact with the IDE simultaneously.
 
 ### Claude Desktop
 
-Download the `.mcpb` bundle for your platform from [Releases](https://github.com/andrewleech/ViperIDE/releases). In Claude Desktop, go to Settings > Extensions > Advanced Settings > Install Extension, then select the `.mcpb` file.
+Download the `.mcpb` bundle for your platform from [Releases](https://github.com/andrewleech/Codemicro/releases). In Claude Desktop, go to Settings > Extensions > Advanced Settings > Install Extension, then select the `.mcpb` file.
 
 ### Claude Code
 
@@ -36,8 +36,8 @@ claude mcp add viperIDE -- npx -y @andrewleech/viperide-mcp
 ### From source
 
 ```bash
-git clone https://github.com/andrewleech/ViperIDE.git
-cd ViperIDE && npm install && python3 build.py
+git clone https://github.com/andrewleech/Codemicro.git
+cd Codemicro && npm install && python3 build.py
 cd mcp && npm install
 claude mcp add viperIDE -- node $(pwd)/src/index.js
 ```
@@ -98,7 +98,7 @@ The MCP server includes a serial-to-WebSocket bridge that lets Claude connect di
 1. Use `viperIDE_list_serial_ports` to discover connected devices
 2. Use `viperIDE_connect_serial` with the device path to connect
 
-The bridge opens the serial port at 115200 baud and fakes a WebREPL handshake so ViperIDE's existing WebSocket transport works unchanged. Multiple devices can be bridged simultaneously.
+The bridge opens the serial port at 115200 baud and fakes a WebREPL handshake so Codemicro's existing WebSocket transport works unchanged. Multiple devices can be bridged simultaneously.
 
 Requires the `serialport` npm package (installed automatically with `npm install`).
 
@@ -115,7 +115,7 @@ Requires the `serialport` npm package (installed automatically with `npm install
 During development, you can run the MCP server directly:
 
 ```bash
-# Build ViperIDE first
+# Build Codemicro first
 npm install && python3 build.py
 
 # Install MCP deps

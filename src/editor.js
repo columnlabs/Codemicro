@@ -461,16 +461,28 @@ export async function createNewEditor(editorElement, fn, content, options) {
                         fontFamily: '"Hack", "Droid Sans Mono", "monospace", monospace',
                         background: 'var(--bg-color-edit)',
                         gutterBackground: 'var(--bg-color-edit)',
+                        foreground: '#d4d4d4',
+                        caret: '#aeafad',
+                        selection: '#264f78',
                     },
                     styles: [
                         {
                             tag: [tags.name, tags.deleted, tags.character, tags.macroName],
-                            color: 'white'
+                            color: '#9cdcfe'
                         }, {
                             tag: [tags.meta, tags.comment],
-                            color: '#afac99',
+                            color: '#6a9955',
                             fontStyle: 'italic',
                             //fontWeight: '300',
+                        }, {
+                            tag: [tags.string],
+                            color: '#ce9178',
+                        }, {
+                            tag: [tags.keyword, tags.operatorKeyword],
+                            color: '#569cd6',
+                        }, {
+                            tag: [tags.number, tags.bool, tags.null],
+                            color: '#b5cea8',
                         }
                     ]
                 }),

@@ -185,7 +185,7 @@ describe('Packages', () => {
         await withLib(ctx.port, async (raw) => {
             const out = await raw.exec(`
 import base64
-print(base64.b64encode(b'ViperIDE').decode())
+print(base64.b64encode(b'Codemicro').decode())
 `, 20000)
             assert.strictEqual(out.trim(), 'VmlwZXJJREU=')
         })
@@ -227,7 +227,7 @@ print(base64.b64encode(b'ViperIDE').decode())
     it('installs straight from a github: url', async () => {
         await withLib(ctx.port, async (raw) => {
             await pm.rawInstallPkg(raw,
-                'github:vshymanskyy/ViperIDE/packages/viper-tools/ws_client.py',
+                'github:columnlabs/Codemicro/packages/viper-tools/ws_client.py',
                 { dev, prefer_source: true })
             assert(await exists(raw, `${libPath}/ws_client.py`), 'ws_client.py was not installed')
         })
@@ -236,7 +236,7 @@ print(base64.b64encode(b'ViperIDE').decode())
     it('resolves dependencies', async () => {
         const pkg_info = {
             version: '1.0',
-            urls: [['viper_dep_root.py', 'github:vshymanskyy/ViperIDE/packages/viper-tools/ble_repl.py']],
+            urls: [['viper_dep_root.py', 'github:columnlabs/Codemicro/packages/viper-tools/ble_repl.py']],
             deps: ['pathlib', ['hmac', 'latest']],   // string form and [name, version] form
         }
         await withLib(ctx.port, async (raw) => {

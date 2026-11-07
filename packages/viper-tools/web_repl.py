@@ -90,7 +90,7 @@ def send_html(cl):
         b"""\
 HTTP/1.0 200 OK\r
 \r
-<head><base href=\"https://viper-ide.org\"></base>\r
+<head><base href=\"https://columnlabs.github.io/Codemicro\"></base>\r
 <script src="webrepl_content.js"></script></head>\r
 """
     )

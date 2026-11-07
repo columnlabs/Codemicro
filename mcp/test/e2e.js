@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * End-to-end test for the ViperIDE MCP server.
+ * End-to-end test for the Codemicro MCP server.
  *
  * Usage:
  *   node mcp/test/e2e.js                                    # VM-only test
@@ -438,7 +438,7 @@ async function runErrorTests(client) {
 
 // --- Main ---
 
-console.log('ViperIDE MCP Server - End-to-End Test')
+console.log('Codemicro MCP Server - End-to-End Test')
 console.log('=====================================\n')
 
 // Ensure the server can open a browser on the local display

@@ -1,4 +1,4 @@
-# ViperIDE Features
+# Codemicro Features
 
 - No software installation required, works out of the box
 - Covers most of the functionality of tools like `Thonny`, `mpremote`, `ampy`, `rshell`
@@ -7,9 +7,9 @@
   - [`WebREPL over internet 🌎`](Web-REPL-Relay.md)
   - [`WebREPL in local network`](Web-REPL-Server.md)
   - [`Bluetooth LE`](Bluetooth-REPL.md)
-  - [`P2P/WebRTC Bridge`](https://viper-ide.org/bridge.html)
-  - [`Virtual Device`](https://viper-ide.org/?vm=1)
-- [**Firmware Flasher**](https://viper-ide.org/flasher.html) - install MicroPython on your board
+  - [`P2P/WebRTC Bridge`](https://columnlabs.github.io/Codemicro/bridge.html)
+  - [`Virtual Device`](https://columnlabs.github.io/Codemicro/?vm=1)
+- [**Firmware Flasher**](https://columnlabs.github.io/Codemicro/flasher.html) - install MicroPython on your board
 - **File Editor**
   - Syntax highlighting for `.py`, `.json`, `.inf`, `.toml`, `.pem`
   - Auto expand/minify of `.json` files
@@ -88,7 +88,7 @@
 
 - `WebUSB` and `WebBluetooth` require a Chrome-based browser like Edge, Opera, Chromium, Brave, etc.
 - Older MicroPython versions may or may not work. Keep your MicroPython up to date.
-  *That said, ViperIDE has been reported to work with MicroPython v1.13 back from Sep 2020* 🤠
+  *That said, Codemicro has been reported to work with MicroPython v1.13 back from Sep 2020* 🤠
 - Some USB devices require drivers installation.
 - Some boards are not detected by Android via USB OTG.
   Try the provided `Use WebUSB instead of WebSerial` setting.

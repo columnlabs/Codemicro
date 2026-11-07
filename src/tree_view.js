@@ -190,7 +190,11 @@ export class TreeView {
         const path = escapeHTML(node.path)
 
         const icon = (expanded && node.iconOpen) ? node.iconOpen : node.icon
-        const label = (icon ? `<i class="${escapeHTML(icon)} fa-fw"></i> ` : '') +
+        const caret = node.children
+            ? `<i class="tree-caret fa-solid ${expanded ? 'fa-chevron-down' : 'fa-chevron-right'}"></i> `
+            : ''
+        const label = caret +
+                      (icon ? `<i class="${escapeHTML(icon)} fa-fw"></i> ` : '') +
                       escapeHTML(node.name) + (node.suffix || '')
         const classes = ['name'].concat(node.classes || []).join(' ')
         const data = Object.entries(node.data || {})
@@ -280,7 +284,7 @@ export class TreeView {
         // Font Awesome's auto-replacer swaps the rendered <i> for an <svg> some
         // time after render(), so the icon is whatever ended up first in the
         // DOM - not necessarily an <i> - rather than something to query for by tag
-        const icon = node.icon ? nameEl.firstElementChild : null
+        const icon = node.icon ? nameEl.querySelector('.fa-fw') : null
         if (icon) {
             wrap.appendChild(icon.cloneNode(true))
             wrap.appendChild(document.createTextNode(' '))

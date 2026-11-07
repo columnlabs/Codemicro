@@ -3,9 +3,9 @@ set -euo pipefail
 
 INSTALL_DIR="${VIPERIDE_MCP_DIR:-$HOME/.local/share/viperIDE-mcp}"
 BRANCH="feature/mcp-server"
-REPO="https://github.com/andrewleech/ViperIDE.git"
+REPO="https://github.com/andrewleech/Codemicro.git"
 
-echo "=== ViperIDE MCP Server Installer ==="
+echo "=== Codemicro MCP Server Installer ==="
 echo ""
 
 # Check required tools
@@ -28,14 +28,14 @@ if [ -d "$INSTALL_DIR/.git" ]; then
     git checkout "$BRANCH"
     git pull origin "$BRANCH"
 else
-    echo "Cloning ViperIDE ($BRANCH) to $INSTALL_DIR ..."
+    echo "Cloning Codemicro ($BRANCH) to $INSTALL_DIR ..."
     git clone --branch "$BRANCH" --single-branch "$REPO" "$INSTALL_DIR"
     cd "$INSTALL_DIR"
 fi
 
-# Install ViperIDE dependencies and build
+# Install Codemicro dependencies and build
 echo ""
-echo "Installing ViperIDE dependencies..."
+echo "Installing Codemicro dependencies..."
 npm install
 
 # python-minifier download in build.py needs requests
@@ -46,7 +46,7 @@ python3 -c "import requests" 2>/dev/null || {
     }
 }
 
-echo "Building ViperIDE..."
+echo "Building Codemicro..."
 python3 build.py
 
 # Install MCP server dependencies
@@ -66,7 +66,7 @@ echo ""
 if command -v claude &>/dev/null; then
     echo "Registering with Claude Code..."
     claude mcp add viperIDE -- "$MCP_CMD" "$MCP_ARG" && {
-        echo "Done. Restart Claude Code to use ViperIDE tools."
+        echo "Done. Restart Claude Code to use Codemicro tools."
     } || {
         echo "Auto-registration failed. Register manually:"
         echo "  claude mcp add viperIDE -- $MCP_CMD $MCP_ARG"

@@ -16,7 +16,7 @@ export class SerialBridge {
         const encoded = url.pathname.slice('/serial/'.length)
         const devicePath = decodeURIComponent(encoded)
 
-        console.error(`[ViperIDE MCP] Serial bridge opening: ${devicePath}`)
+        console.error(`[Codemicro MCP] Serial bridge opening: ${devicePath}`)
 
         let port
         try {
@@ -26,7 +26,7 @@ export class SerialBridge {
                 autoOpen: false,
             })
         } catch (err) {
-            console.error(`[ViperIDE MCP] Serial port create error: ${err.message}`)
+            console.error(`[Codemicro MCP] Serial port create error: ${err.message}`)
             ws.close(1011, err.message.slice(0, 123))
             return
         }
@@ -38,7 +38,7 @@ export class SerialBridge {
         const cleanup = (reason) => {
             if (closed) return
             closed = true
-            console.error(`[ViperIDE MCP] Serial bridge closed: ${devicePath} (${reason})`)
+            console.error(`[Codemicro MCP] Serial bridge closed: ${devicePath} (${reason})`)
             if (port.isOpen) {
                 port.close(() => {})
             }
@@ -65,7 +65,7 @@ export class SerialBridge {
 
         port.open((err) => {
             if (err) {
-                console.error(`[ViperIDE MCP] Serial port open error: ${err.message}`)
+                console.error(`[Codemicro MCP] Serial port open error: ${err.message}`)
                 ws.close(1011, err.message.slice(0, 123))
                 return
             }

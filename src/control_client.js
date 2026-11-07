@@ -10,7 +10,7 @@
  * MCP Control Client
  *
  * Browser-side WebSocket client that enables programmatic control
- * of ViperIDE from an MCP server. Connects to ws://localhost:PORT/ws
+ * of Codemicro from an MCP server. Connects to ws://localhost:PORT/ws
  * when the IDE is loaded with ?mcp query parameter.
  */
 
@@ -78,7 +78,7 @@ export function initControlClient(api) {
         send({ type: 'event', event: name, data })
     }
 
-    // Serialized via mutex because upstream ViperIDE uses browser dialogs
+    // Serialized via mutex because upstream Codemicro uses browser dialogs
     // and we can't modify those function signatures.
     const dialogMutex = new Mutex()
     async function withDialogOverrides(overrides, fn) {

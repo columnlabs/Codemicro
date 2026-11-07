@@ -25,6 +25,9 @@ body.loaded {
 }
 
 .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     font-weight: normal;
 }
 
@@ -361,6 +364,11 @@ body.loaded {
     white-space: nowrap;
 }
 
+.tree-caret {
+    width: 0.8rem;
+    opacity: 0.75;
+}
+
 .tree-row.dragging {
     opacity: 40%;
 }
@@ -436,10 +444,10 @@ body.loaded {
 }
 
 #menu-file-tree .selected {
-    color: var(--bg-color);
-    background: var(--fg-color);
+    color: #ffffff;
+    background: #094771;
     border-radius: 1px;
-    outline: 2px solid var(--fg-color);
+    outline: 2px solid #0e639c;
 }
 
 .menu-action {
@@ -463,8 +471,8 @@ body.loaded {
 }
 
 .about-logo {
-    width: 30%;
-    height: auto;
+    font-size: 4rem;
+    color: #3794ff;
 }
 
 .about-title {

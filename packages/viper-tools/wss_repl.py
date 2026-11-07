@@ -158,7 +158,7 @@ def start(uid=None, url=_default_url):
     try:
         _start(uid, url)
         if _url == _default_url:
-            lnk = "https://viper-ide.org?wss=" + _uid
+            lnk = "https://columnlabs.github.io/Codemicro?wss=" + _uid
             print("IDE available on", lnk)
         else:
             lnk = url + "/" + _uid

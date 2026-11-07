@@ -145,7 +145,7 @@ describe('REPL prompt detection', () => {
     })
 
     /*
-     * The cycle ViperIDE performs for every board operation - enter raw mode, run
+     * The cycle Codemicro performs for every board operation - enter raw mode, run
      * something, leave again - against a prompt that is not '>>> '. Both cases:
      * aiorepl's, which is known up front, and one that has to be read from sys.ps1.
      */
@@ -190,7 +190,7 @@ describe('REPL prompt detection', () => {
     /*
      * Every operation begins by interrupting the board, so whatever that interrupt
      * echoes goes to the terminal on every file list, read, write and run. The prompt
-     * a board answers Ctrl-C with is the reply to a question ViperIDE asked - not
+     * a board answers Ctrl-C with is the reply to a question Codemicro asked - not
      * output the user wants to see.
      */
     it('opening a session is silent on the terminal', async () => {

@@ -16,8 +16,8 @@ export { MicroPythonWASM, SYSTEM_DIRS }
 const T = i18next.t.bind(i18next)
 
 function getDefaultMainPy() { return `\
-# ViperIDE - MicroPython Web IDE
-# Read more: https://github.com/vshymanskyy/ViperIDE
+# Codemicro - MicroPython Web IDE
+# Read more: https://github.com/columnlabs/Codemicro
 
 # This is a MicroPython virtual machine, running directly in your browser using WebAssembly.
 #

@@ -757,7 +757,7 @@ async function flash() {
                 if (!state.loader) { throw new Error('The serial port is closed - connect the board again.') }
                 await flashEsp(state.loader, data, flashOffsetFor(board), { onProgress })
                 // The board has been reset into the firmware; give the port back, so
-                // ViperIDE or another tool can open it. Flashing again starts from Connect.
+                // Codemicro or another tool can open it. Flashing again starts from Connect.
                 await closeEspPort()
                 log('Done! The board has been reset into the new firmware and the port is closed.')
             } else if (state.family === 'w600') {

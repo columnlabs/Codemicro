@@ -1,12 +1,12 @@
 {
     "lang": "en-us",
-    "name": "ViperIDE",
-    "short_name": "ViperIDE",
+    "name": "Codemicro",
+    "short_name": "Codemicro",
     "description": "MicroPython Web IDE",
     "start_url": "/index.html",
     "scope": "/",
-    "background_color": "#2a2e32",
-    "theme_color": "#2a2e32",
+    "background_color": "#1e1e1e",
+    "theme_color": "#1e1e1e",
     "display": "standalone",
     "handle_links": "preferred",
     "launch_handler": {

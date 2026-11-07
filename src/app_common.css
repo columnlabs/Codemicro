@@ -7,15 +7,15 @@
  */
 
 :root {
-    --fg-color: white;
-    --fg-color-highlight: orange;
-    --accent-color: #0a84ff;
-    --bg-color: #2a2e32;
-    --bg-color-menu: #2a2e32ee;
-    --bg-color-edit: #111314;
+    --fg-color: #cccccc;
+    --fg-color-highlight: #4fc1ff;
+    --accent-color: #007acc;
+    --bg-color: #1e1e1e;
+    --bg-color-menu: #252526;
+    --bg-color-edit: #1e1e1e;
     --font-size: 14px;
-    --connected-passive: #87c244;
-    --connected-active: #0a84ff;
+    --connected-passive: #4ec9b0;
+    --connected-active: #007acc;
     --connected-color: var(--connected-passive);
     --animation: 0.3s ease-in-out;
 }
@@ -259,17 +259,17 @@ option {
 
 .fa-power-off { color: #ffcc4d; }
 .fa-bug { color: #ffcc4d; }
-.fa-download { color: #87c244; }
-.fa-circle-play { color: #3b88c3; }
+.fa-download { color: #4ec9b0; }
+.fa-circle-play { color: #3794ff; }
 .fa-circle-stop { color: #ff7272; }
-.fa-circle-info { color: #3b88c3; }
-.fa-file { color: #3b88c3; }
+.fa-circle-info { color: #3794ff; }
+.fa-file { color: #3794ff; }
 .fa-file-circle-exclamation { color: #ed4337; }
 .fa-folder, .fa-folder-open { color: #ffcc4d; }
 .fa-certificate { color: #ba0311; }
 .fa-cube { color: #ba9066; }
 .fa-cubes { color: #ba9066; }
-.fa-gauge-high { color: #87c244; }
+.fa-gauge-high { color: #4ec9b0; }
 .fa-tools { color: #ccd6dd; }
 /*.fa-arrows-rotate { color: #3b88c3; }*/
 .fa-sliders { color: #ccd6dd }
