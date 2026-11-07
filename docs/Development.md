@@ -1,6 +1,6 @@
-# ViperIDE Development
+# Codemicro Development
 
-This guide covers the common local development workflow for ViperIDE.
+This guide covers the common local development workflow for Codemicro.
 
 ## Prerequisites
 
@@ -21,18 +21,18 @@ npm install --include=dev
 | `assets/` | Icons and images copied into the production build |
 | `docs/` | User and contributor documentation |
 | `packages/viper-tools/` | MicroPython helper package metadata and files |
-| `mcp/` | MCP server for controlling ViperIDE from an AI client |
+| `mcp/` | MCP server for controlling Codemicro from an AI client |
 | `build.py` | Production build script used by GitHub Pages deployment |
 | `rollup.config.mjs` | Rollup bundle configuration |
 
 ## Base URL
 
-ViperIDE loads its WebAssembly runtimes, virtual filesystem archives and `manifest.json` over absolute URLs, so the origin it is served from has to be baked into the bundle. It is substituted at build time from the `VIPER_IDE_BASE_URL` environment variable:
+Codemicro loads its WebAssembly runtimes, virtual filesystem archives and `manifest.json` over absolute URLs, so the origin it is served from has to be baked into the bundle. It is substituted at build time from the `VIPER_IDE_BASE_URL` environment variable:
 
 - In JavaScript, as the `VIPER_IDE_BASE_URL` constant (replaced by Rollup)
 - In HTML, as the `${VIPER_IDE_BASE_URL}` placeholder (replaced while copying the files into `build/`)
 
-`build.py` defaults it to `http://localhost:10001` and passes it on to Rollup. CI workflows set `VIPER_IDE_BASE_URL=https://viper-ide.org` explicitly for production builds.
+`build.py` defaults it to `http://localhost:10001` and passes it on to Rollup. CI workflows set `VIPER_IDE_BASE_URL=https://columnlabs.github.io/Codemicro` explicitly for production builds.
 
 **To override it manually, set `VIPER_IDE_BASE_URL`:**
 
@@ -123,7 +123,7 @@ cd mcp
 npm install
 ```
 
-For development, build ViperIDE first, then run the MCP server:
+For development, build Codemicro first, then run the MCP server:
 
 ```sh
 cd ..
@@ -132,7 +132,7 @@ cd mcp
 npm start
 ```
 
-The server serves the built ViperIDE, opens a browser window, and exposes MCP tools for IDE, terminal, file, package, and device operations.
+The server serves the built Codemicro, opens a browser window, and exposes MCP tools for IDE, terminal, file, package, and device operations.
 
 ## Release Notes
 

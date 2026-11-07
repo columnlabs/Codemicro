@@ -12,7 +12,7 @@ export class Bridge {
 
         ideServer.onConnect = (ws) => {
             if (this.activeWs) {
-                console.error('[ViperIDE MCP] New browser tab connected, replacing previous')
+                console.error('[Codemicro MCP] New browser tab connected, replacing previous')
                 for (const [id, { reject, timeout }] of this.pending) {
                     clearTimeout(timeout)
                     reject(new Error('Another browser tab connected'))
@@ -22,7 +22,7 @@ export class Bridge {
             this.activeWs = ws
             for (const resolve of this.connectWaiters) resolve()
             this.connectWaiters = []
-            console.error('[ViperIDE MCP] Browser connected')
+            console.error('[Codemicro MCP] Browser connected')
         }
 
         ideServer.onDisconnect = (ws) => {
@@ -33,7 +33,7 @@ export class Bridge {
                     reject(new Error('Browser disconnected'))
                 }
                 this.pending.clear()
-                console.error('[ViperIDE MCP] Browser disconnected')
+                console.error('[Codemicro MCP] Browser disconnected')
             }
         }
 
@@ -59,7 +59,7 @@ export class Bridge {
             }
 
             if (msg.type === 'event') {
-                console.error(`[ViperIDE MCP] Event: ${msg.event}`, msg.data || '')
+                console.error(`[Codemicro MCP] Event: ${msg.event}`, msg.data || '')
             }
         }
     }
@@ -77,7 +77,7 @@ export class Bridge {
             }
             const timer = setTimeout(() => {
                 this.connectWaiters = this.connectWaiters.filter(w => w !== waiter)
-                reject(new Error('Timed out waiting for ViperIDE browser to connect'))
+                reject(new Error('Timed out waiting for Codemicro browser to connect'))
             }, timeoutMs)
             this.connectWaiters.push(waiter)
         })

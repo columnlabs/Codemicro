@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="${VIPER_IDE_DESCR}">
     <meta property="og:description" content="${VIPER_IDE_DESCR}">
-    <title>ViperIDE P2P Bridge</title>
+    <title>Codemicro P2P Bridge</title>
     <link rel="icon" type="image/png" sizes="512x512" href="${VIPER_IDE_BASE_URL}/assets/favicon.png"/>
     <link rel="apple-touch-icon" sizes="512x512" href="${VIPER_IDE_BASE_URL}/assets/favicon.png"/>
 
@@ -17,9 +17,9 @@
     </style>
 </head>
 <body class="page">
-    <h1>ViperIDE P2P Bridge</h1>
+    <h1>Codemicro P2P Bridge</h1>
 
-    <p>The bridge allows creating a secure, peer-to-peer connection between the device and ViperIDE <b>across the internet</b>.</p>
+    <p>The bridge allows creating a secure, peer-to-peer connection between the device and Codemicro <b>across the internet</b>.</p>
 
     <ol>
         <li>
@@ -33,7 +33,7 @@
         <li>Grab a Bridge P2P ID:<br>
             <span class="highlight monospace" id="bridge-id"></span>
         </li>
-        <li>In <a class="link" href="${VIPER_IDE_BASE_URL}" target="_blank">Viper IDE</a>, click <span class="highlight"><i class="fa-solid fa-link"></i> Connect WebREPL</span> button and insert your Bridge P2P ID.<br>
+        <li>In <a class="link" href="${VIPER_IDE_BASE_URL}" target="_blank">Codemicro</a>, click <span class="highlight"><i class="fa-solid fa-link"></i> Connect WebREPL</span> button and insert your Bridge P2P ID.<br>
             You can also use a direct link: <span class="highlight monospace" id="ide-link"></span>
         </li>
     </ol>
@@ -197,7 +197,7 @@ async function connectDevice(type) {
     QID('ide-link').textContent = '${VIPER_IDE_BASE_URL}?rtc=' + rtc.info.id
 
     rtc.onConnect(() => {
-        toastr.info('ViperIDE connected')
+        toastr.info('Codemicro connected')
     })
 
     rtc.onReceive(async (data) => {
@@ -211,7 +211,7 @@ async function connectDevice(type) {
     })
 
     rtc.onDisconnect(() => {
-        toastr.warning('ViperIDE disconnected')
+        toastr.warning('Codemicro disconnected')
     })
 
     port.onDisconnect(() => {

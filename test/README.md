@@ -2,7 +2,7 @@
 
 A [Mocha](https://mochajs.org) + [Chai](https://www.chaijs.com) suite that drives a
 MicroPython/CircuitPython board
-through **the same code ViperIDE ships** - `src/rawmode.js`, `src/transports/` and
+through **the same code Codemicro ships** - `src/rawmode.js`, `src/transports/` and
 `src/package_mgr.js` are loaded from `src/`, not reimplemented here (see
 [How it works](#how-it-works)).
 
@@ -30,7 +30,7 @@ The target names itself in `VIPER_TEST_TARGET`:
 
 | Target   | How to select                        | Notes |
 |----------|--------------------------------------|-------|
-| `vm`     | the default                          | The `@micropython/micropython-webassembly-pyscript` build ViperIDE uses as its virtual device. Runs anywhere, no board needed. |
+| `vm`     | the default                          | The `@micropython/micropython-webassembly-pyscript` build Codemicro uses as its virtual device. Runs anywhere, no board needed. |
 | serial   | `COM7`, `/dev/ttyACM0`               | Needs `npm install --no-save serialport`; the copy under `mcp/node_modules` is used if present. |
 | WebREPL  | `ws://host:8266`                     | Uses Node's built-in `WebSocket`, no extra package. Works against `mcp/src/serial-bridge.js` too. |
 
@@ -87,7 +87,7 @@ back altered, content that does not round-trip) fail.
 
 ## How it works
 
-The point of this suite is to exercise the *real* ViperIDE code that talks to a board, so
+The point of this suite is to exercise the *real* Codemicro code that talks to a board, so
 every module under test is imported straight from `src/` - nothing here re-implements or
 rewrites one. That works because the browser-only half of the code is kept in its own
 modules: `src/utils.js` has no imports at all and `src/utils_browser.js` holds everything
@@ -111,7 +111,7 @@ together: it is the only thing that has to name `setup.js`.
 
 `board.js` deliberately does not reuse `MpRawMode`'s path handling: paths go to the
 device as byte lists and names come back hex-encoded, so a test can tell "the board
-cannot store this name" apart from "ViperIDE mangled it". Verifying a write with the
+cannot store this name" apart from "Codemicro mangled it". Verifying a write with the
 same escaping that performed it would make the *Files / names* suites tautological - it
 is what let them catch `pyStr()` mangling a control character.
 

@@ -6,7 +6,7 @@ A `Secure WebSocket Relay` can be used to connect to your device over the intern
 > [!WARNING]
 > **🚧 THIS IS EXPERIMENTAL, BEWARE OF BUGS 🚧**
 
-#### 1. Connect [ViperIDE](https://viper-ide.org) to your device using USB
+#### 1. Connect [Codemicro](https://columnlabs.github.io/Codemicro) to your device using USB
 
 #### 2. In the left panel: `Package Manager` -> install `viper-tools`
 
@@ -36,10 +36,10 @@ wss_repl.start(uid='YOUR-DEVICE-UID')
 In the terminal, you should see something like:
 
 ```log
-IDE available on https://viper-ide.org?wss=YOUR-DEVICE-UID
+IDE available on https://columnlabs.github.io/Codemicro?wss=YOUR-DEVICE-UID
 ```
 
-#### 5. Connect ViperIDE to your device using `WebREPL`
+#### 5. Connect Codemicro to your device using `WebREPL`
 
 Visit the specified link to open the IDE.
 
@@ -53,5 +53,5 @@ If you're running a [relay server](../src/websocket_relay.cjs), please specify t
 wss_repl.start(url='wss://your-server-url')
 ```
 
-1. Use WebREPL button in `ViperIDE` to connect to your device
+1. Use WebREPL button in `Codemicro` to connect to your device
 2. Your device address will look like this: `wss://your-server-url/YOUR-DEVICE-UID`

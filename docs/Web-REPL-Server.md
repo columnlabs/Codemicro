@@ -1,15 +1,15 @@
 
 ## Web REPL Server
 
-This connection method requires `ViperIDE` to establish a direct network connection to your MicroPython board.
+This connection method requires `Codemicro` to establish a direct network connection to your MicroPython board.
 The board acts as a web server, so usually you need to be connected to the same local network.
 
 > [!IMPORTANT]
-> It uses an **unsecure** WebSocket connection, which is not available for secure websites like ViperIDE.
-> To workaround this, ViperIDE will also be served from the device on the local network (and your browser will be automatically redirected to the device).
+> It uses an **unsecure** WebSocket connection, which is not available for secure websites like Codemicro.
+> To workaround this, Codemicro will also be served from the device on the local network (and your browser will be automatically redirected to the device).
 > **If you'd like to connect to your device over the internet, consider using a [Secure WebSocket Relay](./Web-REPL-Relay.md)**
 
-#### 1. Connect [ViperIDE](https://viper-ide.org) to your device using USB
+#### 1. Connect [Codemicro](https://columnlabs.github.io/Codemicro) to your device using USB
 
 #### 2. In the left panel: `Package Manager` -> install `viper-tools`
 
@@ -33,11 +33,11 @@ In the terminal, you should see something like:
 WebREPL server started on http://192.168.1.123:8266/
 ```
 
-#### 5. Connect ViperIDE to your device using `WebREPL`
+#### 5. Connect Codemicro to your device using `WebREPL`
 
 Visit the specified link to open the IDE.
 
-Alternatively, use WebREPL button in `ViperIDE` to connect to your device.
+Alternatively, use WebREPL button in `Codemicro` to connect to your device.
 
 > [!NOTE]
 > If it opens the original MicroPython WebREPL app, it means you're using the original `webrepl` package instead of the one included in `viper-tools`

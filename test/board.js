@@ -6,7 +6,7 @@
  *
  * These deliberately do NOT reuse MpRawMode's path handling: paths are passed to the
  * device as byte lists and names are read back hex-encoded, so a test can tell the
- * difference between "the board cannot store this name" and "ViperIDE mangled it".
+ * difference between "the board cannot store this name" and "Codemicro mangled it".
  */
 
 import { MpRawMode, SOFT_RESET_BANNER, REPL_PROMPTS } from '../src/rawmode.js'
@@ -54,7 +54,7 @@ function hexToStr(hex) {
 }
 
 /* Opens a raw REPL session, runs fn, and always leaves the board back at the friendly
- * REPL - the same begin/end cycle ViperIDE performs for every board operation. */
+ * REPL - the same begin/end cycle Codemicro performs for every board operation. */
 export async function withRaw(port, fn, { soft_reboot = false } = {}) {
     const raw = await MpRawMode.begin(port, soft_reboot)
     try {

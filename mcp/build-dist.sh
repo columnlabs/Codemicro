@@ -16,11 +16,11 @@ case "$PLATFORM" in
 esac
 
 VERSION=$(node -p "require('./package.json').version")
-echo "=== Building ViperIDE MCP v${VERSION} for ${MCPB_PLATFORM} ==="
+echo "=== Building Codemicro MCP v${VERSION} for ${MCPB_PLATFORM} ==="
 
-# Step 1: Build ViperIDE if needed
+# Step 1: Build Codemicro if needed
 if [ ! -f "$REPO_ROOT/build/index.html" ]; then
-    echo "Building ViperIDE..."
+    echo "Building Codemicro..."
     cd "$REPO_ROOT"
     npm install
     python3 build.py
@@ -35,7 +35,7 @@ for f in index.js ide-server.js bridge.js serial-bridge.js; do
     cp "$SCRIPT_DIR/src/$f" "$STAGING/server/"
 done
 
-# Step 4: Copy pre-built ViperIDE assets (exclude source maps)
+# Step 4: Copy pre-built Codemicro assets (exclude source maps)
 cp -r "$REPO_ROOT/build" "$STAGING/"
 find "$STAGING/build" -name '*.map' -delete 2>/dev/null || true
 
@@ -44,7 +44,7 @@ cat > "$STAGING/package.json" << PKGJSON
 {
   "name": "@andrewleech/viperide-mcp",
   "version": "${VERSION}",
-  "description": "MCP server for controlling ViperIDE - a MicroPython/CircuitPython IDE",
+  "description": "MCP server for controlling Codemicro - a MicroPython/CircuitPython IDE",
   "type": "module",
   "main": "server/index.js",
   "bin": {
@@ -60,7 +60,7 @@ cat > "$STAGING/package.json" << PKGJSON
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/andrewleech/ViperIDE",
+    "url": "https://github.com/andrewleech/Codemicro",
     "directory": "mcp"
   }
 }
@@ -83,16 +83,16 @@ cat > "$STAGING/manifest.json" << MANIFEST
 {
   "manifest_version": "0.3",
   "name": "viperIDE",
-  "display_name": "ViperIDE",
+  "display_name": "Codemicro",
   "version": "${VERSION}",
   "description": "MicroPython/CircuitPython IDE with full remote control. Connect to devices via USB serial, browse files, edit code, execute scripts, and interact with the REPL.",
   "author": {
     "name": "Andrew Leech & Volodymyr Shymanskyy"
   },
   "license": "MIT",
-  "homepage": "https://viper-ide.org",
+  "homepage": "https://columnlabs.github.io/Codemicro",
   "repository": {
-    "url": "https://github.com/vshymanskyy/ViperIDE",
+    "url": "https://github.com/columnlabs/Codemicro",
     "type": "git"
   },
   "server": {

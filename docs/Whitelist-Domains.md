@@ -1,11 +1,11 @@
 
-## Whitelist Domains for ViperIDE
+## Whitelist Domains for Codemicro
 
-To ensure the correct functionality of the ViperIDE web app, IT departments are advised to unblock or whitelist the following domains:
+To ensure the correct functionality of the Codemicro web app, IT departments are advised to unblock or whitelist the following domains:
 
-- `viper-ide.org` - the main IDE server (currently hosted on GitHub Pages)
+- `columnlabs.github.io` - the main IDE host (Codemicro is served from `/Codemicro`)
 - `hub.viper-ide.org` - the collaborative features and remote device connection services
-- `micropython.org` - MicroPython package index / library manager, and official firmware images (used by the [Flasher](https://viper-ide.org/flasher.html))
+- `micropython.org` - MicroPython package index / library manager, and official firmware images (used by the [Flasher](https://columnlabs.github.io/Codemicro/flasher.html))
 - `raw.githubusercontent.com`, `gitlab.com` - additional MicroPython packages
 - `cors.sh`, `pro.cors.lol` - relays the requests above to `micropython.org` and `gitlab.com`, which do not send CORS headers of their own
 

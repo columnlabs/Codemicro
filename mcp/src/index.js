@@ -20,8 +20,8 @@ const buildDir = process.env.VIPERIDE_BUILD_DIR
         .find(d => fs.existsSync(path.join(d, 'index.html')))
 
 if (!buildDir) {
-    console.error('[ViperIDE MCP] Build directory not found.')
-    console.error('[ViperIDE MCP] Run "python3 build.py" in the ViperIDE root first.')
+    console.error('[Codemicro MCP] Build directory not found.')
+    console.error('[Codemicro MCP] Run "python3 build.py" in the Codemicro root first.')
     process.exit(1)
 }
 
@@ -44,7 +44,7 @@ async function ensureInit() {
         ideServer.serialBridge = serialBridge
         idePort = await ideServer.start()
         ideUrl = `http://localhost:${idePort}/?mcp=1`
-        console.error(`[ViperIDE MCP] IDE server ready at ${ideUrl}`)
+        console.error(`[Codemicro MCP] IDE server ready at ${ideUrl}`)
     })()
     return initPromise
 }
@@ -54,9 +54,9 @@ async function ensureBrowser() {
     await ensureInit()
     if (bridge.isConnected || browserOpening) return
     browserOpening = true
-    console.error('[ViperIDE MCP] Opening browser...')
+    console.error('[Codemicro MCP] Opening browser...')
     open(ideUrl)
-        .catch(err => console.error('[ViperIDE MCP] Failed to open browser:', err))
+        .catch(err => console.error('[Codemicro MCP] Failed to open browser:', err))
         .finally(() => { browserOpening = false })
 }
 
@@ -77,7 +77,7 @@ const mcp = new McpServer({
 // get_status is handled separately so it works without the browser
 mcp.tool(
     'viperIDE_get_status',
-    'Get ViperIDE connection status, device info, and editor state. ViperIDE is served locally from this MCP server at ideUrl; it is NOT at viper-ide.org. If browserConnected is false the tab can be (re)launched with viperIDE_open_ide or by directing the user to ideUrl. The connected/connecting fields reflect the actual device connection state, not the browser state.',
+    'Get Codemicro connection status, device info, and editor state. Codemicro is served locally from this MCP server at ideUrl; it is NOT at https://columnlabs.github.io/Codemicro. If browserConnected is false the tab can be (re)launched with viperIDE_open_ide or by directing the user to ideUrl. The connected/connecting fields reflect the actual device connection state, not the browser state.',
     {},
     async () => {
         await ensureInit()
@@ -87,7 +87,7 @@ mcp.tool(
                 connected: false,
                 deviceInfo: null,
                 ideUrl,
-                message: 'ViperIDE browser tab is not open. Call viperIDE_open_ide to launch it, or open ideUrl in a browser. Do NOT direct the user to viper-ide.org - this MCP serves its own bundled copy locally.',
+                message: 'Codemicro browser tab is not open. Call viperIDE_open_ide to launch it, or open ideUrl in a browser. Do NOT direct the user to https://columnlabs.github.io/Codemicro - this MCP serves its own bundled copy locally.',
             })
         }
         try {
@@ -101,7 +101,7 @@ mcp.tool(
 
 mcp.tool(
     'viperIDE_open_ide',
-    'Open the bundled ViperIDE in the user\'s default browser. Use this if get_status reports browserConnected: false, or if the user says they can\'t see ViperIDE. The URL is served by this MCP server on localhost; never direct the user to viper-ide.org.',
+    'Open the bundled Codemicro in the user\'s default browser. Use this if get_status reports browserConnected: false, or if the user says they can\'t see Codemicro. The URL is served by this MCP server on localhost; never direct the user to https://columnlabs.github.io/Codemicro.',
     {},
     async () => {
         await ensureBrowser()
@@ -109,8 +109,8 @@ mcp.tool(
             ideUrl,
             browserConnected: bridge.isConnected,
             message: bridge.isConnected
-                ? 'ViperIDE browser tab is already connected.'
-                : 'Launching ViperIDE in the default browser. The tab should appear momentarily; poll get_status until browserConnected is true.',
+                ? 'Codemicro browser tab is already connected.'
+                : 'Launching Codemicro in the default browser. The tab should appear momentarily; poll get_status until browserConnected is true.',
         })
     }
 )
@@ -173,19 +173,19 @@ const tools = [
     },
     {
         name: 'viperIDE_open_file',
-        description: 'Open a file from the device in the ViperIDE editor',
+        description: 'Open a file from the device in the Codemicro editor',
         schema: { path: z.string().describe('File path on device to open') },
         method: 'open_file',
     },
     {
         name: 'viperIDE_get_editor',
-        description: 'Get the current content of the ViperIDE editor and the open filename',
+        description: 'Get the current content of the Codemicro editor and the open filename',
         schema: {},
         method: 'get_editor',
     },
     {
         name: 'viperIDE_set_editor',
-        description: 'Replace the content of the ViperIDE editor',
+        description: 'Replace the content of the Codemicro editor',
         schema: { content: z.string().describe('New editor content') },
         method: 'set_editor',
     },
@@ -298,7 +298,7 @@ mcp.tool(
             // Fire and forget - connection + raw mode handshake can take 20+ seconds
             // which exceeds Claude Desktop's API timeout. Return immediately.
             bridge.call('connect_device', { type: 'ws', url: wsUrl })
-                .catch(err => console.error('[ViperIDE MCP] connect_serial error:', err.message))
+                .catch(err => console.error('[Codemicro MCP] connect_serial error:', err.message))
             return textResult({
                 url: wsUrl,
                 ok: true,
@@ -319,4 +319,4 @@ for (const sig of ['SIGINT', 'SIGTERM']) {
 
 const transport = new StdioServerTransport()
 await mcp.connect(transport)
-console.error('[ViperIDE MCP] MCP server ready')
+console.error('[Codemicro MCP] MCP server ready')

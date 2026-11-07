@@ -125,7 +125,7 @@ const portReady = () => !!port && deviceState === 'ready'
  * availability, the Run/Stop button and the resets.
  *
  * Running a script from the editor is a busy board too - it just happens to be
- * busy at ViperIDE's own request - so it blocks the same panels. It is tracked
+ * busy at Codemicro's own request - so it blocks the same panels. It is tracked
  * apart from deviceState because the session stays 'ready' throughout: the board
  * is answering, and raw mode is held rather than lost.
  */
@@ -835,11 +835,11 @@ function downloadName(path) {
             `${pad(now.getMinutes())}` +
             `${pad(now.getSeconds())}`;
         if (devInfo?.uid) {
-            return `viperide-${devInfo.uid}-${t}.zip`
+            return `codemicro-${devInfo.uid}-${t}.zip`
         } else if (devInfo.machine === "webassembly") {
-            return `viperide-vm-${t}.zip`
+            return `codemicro-vm-${t}.zip`
         } else {
-            return `viperide-${devInfo.machine}-${t}.zip`
+            return `codemicro-${devInfo.machine}-${t}.zip`
         }
     } else {
         return `${name}.zip`
@@ -1680,13 +1680,13 @@ export async function saveCurrentFile() {
    tab is closed. It has no file behind it on the device, so it is never saved
    and never reconciled against a board. */
 async function openWelcomeTab() {
-    const fn = 'ViperIDE.md'
+    const fn = 'Codemicro.md'
     const content = `
-# ViperIDE - MicroPython Web IDE
+# Codemicro - MicroPython Web IDE
 
-[![GitHub Repo stars](https://img.shields.io/github/stars/vshymanskyy/ViperIDE?style=flat-square&color=green)](https://github.com/vshymanskyy/ViperIDE/stargazers) 
-[![GitHub issues](https://img.shields.io/github/issues-raw/vshymanskyy/ViperIDE?style=flat-square&label=issues&color=green)](https://github.com/vshymanskyy/ViperIDE/issues) 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](https://github.com/vshymanskyy/ViperIDE) 
+[![GitHub Repo stars](https://img.shields.io/github/stars/columnlabs/Codemicro?style=flat-square&color=green)](https://github.com/columnlabs/Codemicro/stargazers) 
+[![GitHub issues](https://img.shields.io/github/issues-raw/columnlabs/Codemicro?style=flat-square&label=issues&color=green)](https://github.com/columnlabs/Codemicro/issues) 
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](https://github.com/columnlabs/Codemicro) 
 [![Support vshymanskyy](https://img.shields.io/static/v1?style=flat-square&label=support&message=%E2%9D%A4&color=%23fe8e86)](https://gist.github.com/vshymanskyy/840e6fa41ea6b028b91b333b6e4542ed) 
 
 Connect your device and start creating! 🤖👨‍💻🕹️
@@ -1697,12 +1697,12 @@ Connect your device and start creating! 🤖👨‍💻🕹️
 > **New board, no MicroPython on it yet?**  
 > 👉 Use the [Firmware Flasher](${VIPER_IDE_BASE_URL}/flasher.html) to install it.
 
-## More about ViperIDE
+## More about Codemicro
 
-- [README](https://github.com/vshymanskyy/ViperIDE/blob/main/README.md)
-- [Features and device support](https://github.com/vshymanskyy/ViperIDE/blob/main/docs/Features.md)
-- [Documentation](https://github.com/vshymanskyy/ViperIDE/tree/main/docs)
-- [Discussions](https://github.com/orgs/micropython/discussions?discussions_q=ViperIDE)
+- [README](https://github.com/columnlabs/Codemicro/blob/main/README.md)
+- [Features and device support](https://github.com/columnlabs/Codemicro/blob/main/docs/Features.md)
+- [Documentation](https://github.com/columnlabs/Codemicro/tree/main/docs)
+- [Discussions](https://github.com/orgs/micropython/discussions?discussions_q=Codemicro)
 - [![StandWithUkraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md) 
 
 `
@@ -1974,7 +1974,7 @@ async function handleLaunchUrl(targetUrl) {
 let startupSettled = false
 
 /*
- * The manifest asks for 'focus-existing', so a link followed while ViperIDE is
+ * The manifest asks for 'focus-existing', so a link followed while Codemicro is
  * open focuses this window and delivers the URL here instead of reloading it.
  *
  * The launch that opened the window in the first place is delivered here too,
@@ -2190,13 +2190,13 @@ export function applyTranslation() {
     }
 
     QSA('a[id=gh-star]').forEach(el => {
-        el.setAttribute('href', 'https://github.com/vshymanskyy/ViperIDE')
+        el.setAttribute('href', 'https://github.com/columnlabs/Codemicro')
         el.setAttribute('target', '_blank')
         el.classList.add('link')
     })
 
     QSA('a[id=gh-issues]').forEach(el => {
-        el.setAttribute('href', 'https://github.com/vshymanskyy/ViperIDE/issues')
+        el.setAttribute('href', 'https://github.com/columnlabs/Codemicro/issues')
         el.setAttribute('target', '_blank')
         el.classList.add('link')
     })
@@ -2208,7 +2208,7 @@ let offlineReadyToastShown = false
 function showOfflineReadyToast(version) {
     if (offlineReadyToastShown) return
     offlineReadyToastShown = true
-    toastr.success(`ViperIDE ${version} can now be opened and used even if your device is offline or in airplane mode`, "Ready to be used offline")
+    toastr.success(`Codemicro ${version} can now be opened and used even if your device is offline or in airplane mode`, "Ready to be used offline")
 }
 
 (async () => {
@@ -2340,25 +2340,25 @@ function showOfflineReadyToast(version) {
     }
 
     const xtermTheme = {
-        foreground: '#F8F8F8',
+        foreground: '#cccccc',
         background: getCssPropertyValue('--bg-color-edit'),
-        selection: '#5DA5D533',
-        black: '#1E1E1D',
-        brightBlack: '#262625',
-        red: '#CE5C5C',
-        brightRed: '#FF7272',
-        green: '#5BCC5B',
-        brightGreen: '#72FF72',
-        yellow: '#CCCC5B',
-        brightYellow: '#FFFF72',
-        blue: '#5D5DD3',
-        brightBlue: '#7279FF',
-        magenta: '#BC5ED1',
-        brightMagenta: '#E572FF',
-        cyan: '#5DA5D5',
-        brightCyan: '#72F0FF',
-        white: '#F8F8F8',
-        brightWhite: '#FFFFFF'
+        selection: '#264f78',
+        black: '#000000',
+        brightBlack: '#666666',
+        red: '#cd3131',
+        brightRed: '#f14c4c',
+        green: '#0dbc79',
+        brightGreen: '#23d18b',
+        yellow: '#e5e510',
+        brightYellow: '#f5f543',
+        blue: '#2472c8',
+        brightBlue: '#3b8eea',
+        magenta: '#bc3fbc',
+        brightMagenta: '#d670d6',
+        cyan: '#11a8cd',
+        brightCyan: '#29b8db',
+        white: '#e5e5e5',
+        brightWhite: '#e5e5e5'
     }
 
     term = new Terminal({
@@ -2560,8 +2560,8 @@ async function checkForUpdates() {
     lastUpdateCheck = now
 
     const current_version = VIPER_IDE_VERSION
-    QID('viper-ide-version').innerHTML = current_version
-    QID('viper-ide-build').innerText = 'build ' + getBuildDate()
+    QID('codemicro-version').innerHTML = current_version
+    QID('codemicro-build').innerText = 'build ' + getBuildDate()
 
     let manifest;
     try {
@@ -2570,8 +2570,8 @@ async function checkForUpdates() {
         return
     }
     if (current_version.localeCompare(manifest.version, undefined, {numeric: true, sensitivity: "base"}) < 0) {
-        toastr.info("New version available.<br/>Refresh the page to update.", `ViperIDE ${manifest.version}`)
-        QID('viper-ide-version').innerHTML = `${current_version} (<a href="javascript:app.updateApp()">update</a>)`
+        toastr.info("New version available.<br/>Refresh the page to update.", `Codemicro ${manifest.version}`)
+        QID('codemicro-version').innerHTML = `${current_version} (<a href="javascript:app.updateApp()">update</a>)`
 
         // Automatically show about page
         QS('a[data-target="menu-about"]').click()

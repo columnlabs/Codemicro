@@ -307,7 +307,7 @@ export async function flashW600(link, data, { onProgress = () => {}, onLog = () 
     // reset below does not cut it short.
     await link.waitFor(rx => (String.fromCharCode(...rx).includes('run user code') ? true : null), 2000)
     // Reset into the firmware with both control lines let go, then give the port back:
-    // the board is running now, and whatever talks to it next (ViperIDE itself) needs
+    // the board is running now, and whatever talks to it next (Codemicro itself) needs
     // the port free. Flashing again starts from a new connection.
     await link.hardReset({ dataTerminalReady: false })
     await link.close()

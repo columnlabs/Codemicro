@@ -74,7 +74,7 @@ for i in range(5):
 
     it('a new session sees globals from the previous one', async () => {
         // Raw mode does not reset the interpreter, so this is expected - the test pins
-        // the behaviour that ViperIDE relies on (imports stay warm between operations).
+        // the behaviour that Codemicro relies on (imports stay warm between operations).
         await withRaw(ctx.port, raw => raw.exec(`_viper_test_var = 7`))
         await withRaw(ctx.port, async (raw) => {
             assert.strictEqual(lines(await raw.exec(`print(_viper_test_var)`)), '7')
@@ -161,7 +161,7 @@ for i in range(5):
             release()
         }
 
-        // This is what ViperIDE does on every operation: interruptProgram() must break
+        // This is what Codemicro does on every operation: interruptProgram() must break
         // the loop before raw mode can be entered.
         await withRaw(ctx.port, async (raw) => {
             assert.strictEqual(lines(await raw.exec(`print('recovered')`)), 'recovered')
@@ -169,7 +169,7 @@ for i in range(5):
     })
 
     /*
-     * Leaves the board running `code` at the friendly REPL - the state ViperIDE finds
+     * Leaves the board running `code` at the friendly REPL - the state Codemicro finds
      * it in when it is plugged in while a program of its own is going.
      */
     async function startAtRepl(code) {
@@ -271,7 +271,7 @@ for i in range(5):
     })
 
     /*
-     * ViperIDE has nothing but the terminal stream to tell it that the board restarted
+     * Codemicro has nothing but the terminal stream to tell it that the board restarted
      * under it, so the banner has to be exactly what it watches for - and the board has
      * to answer a probe once it is back. This is the sequence the app performs.
      *
