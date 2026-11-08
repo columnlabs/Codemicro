@@ -187,7 +187,7 @@ describe('Packages', () => {
 import base64
 print(base64.b64encode(b'Codemicro').decode())
 `, 20000)
-            assert.strictEqual(out.trim(), 'VmlwZXJJREU=')
+            assert.strictEqual(out.trim(), 'Q29kZW1pY3Jv')
         })
     })
 
